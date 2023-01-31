@@ -8,6 +8,7 @@ import initialTasks from './InitialTasks';
 
 function Tasks() {
   const [tasks, setTasks] = useState(initialTasks);
+  const [showData,setshowData] = useState(true);
 
   const TODO_BASE_URL = 'http://localhost:3000/todos';
 
@@ -53,6 +54,14 @@ function Tasks() {
       setTasks((tasks) => tasks.filter((task) => task.id !== taskId))
     )
   }
+    function filterTodo(completed) {
+    fetch(TODO_BASE_URL,{
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(() =>
+      setTasks((tasks) => tasks.filter((task) => task.complete == completed))
+    )
+  }
 
   function setTodoCompleted(todo) {
     const putBody = JSON.stringify({
@@ -83,19 +92,19 @@ function Tasks() {
   return (
     <>
       <div className="Tasks">
-        <h1>Tasks</h1>
+        <h1 id = "maintext">Tasks</h1>
         <table>
           <thead>
             <tr>
-              <th>Todo ID</th>
-              <th>Title</th>
-              <th>Completed</th>
-              <th>Actions</th>
+              <th id = "tablerow">Todo ID</th>
+              <th id = "tablerow">Title</th>
+              <th id = "tablerow">Completed</th>
+              <th id = "tablerow">Actions</th>
             </tr>
           </thead>
 
-          <tbody>
-            {tasks.map((todo) => {
+          <tbody id="tablebody">
+            {tasks.filter( todo => todo.completed == showData).map((todo) => {
               return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} setTodoCompleted={setTodoCompleted} />
             })}
           </tbody>
@@ -104,6 +113,9 @@ function Tasks() {
 
       <div>
         <TodoForm addTodo={addTodo} />
+      </div>
+      <div>
+        <button id = "button1" onClick={() => setshowData(!showData)}>Filter</button>
       </div>
     </>
   );

@@ -1,0 +1,25 @@
+table{
+    border: 5px solid black;
+}
+#tablerow{
+    background-color:black;
+    font-weight: bold;
+    text-align: center;
+}
+#tablebody{
+    border: 2px solid black;
+}
+#tabled1{
+    border: 2px solid black;
+    font-weight: bold;
+}
+#maintext{
+  margin-left: -50px;
+}
+#button1{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 600px;
+    position : absolute;
+    top: 60px;
+}

@@ -12,11 +12,11 @@ function Todo(props) {
   const { deleteTodo, setTodoCompleted } = props;
 
   return (
-    <tr>
-        <td>{todo.id}</td>
-        <td>{todo.title}</td>
-        <td><a href="#todo" onClick={(e) => { setTodoCompleted(todo)}}>{translateCompleted(todo.completed)}</a></td>  
-        <td><button onClick={() => deleteTodo(todo.id)}>Delete</button></td>
+    <tr id = "tablerow">
+        <td id = "tabled1">{todo.id}</td>
+        <td id = "tabled1">{todo.title}</td>
+        <td id = "tabled1"><a href="#todo" onClick={(e) => { setTodoCompleted(todo)}}>{translateCompleted(todo.completed)}</a></td>  
+        <td id = "tabled1"><button onClick={() => deleteTodo(todo.id)}>Delete</button></td>
     </tr>
   );
 }
